@@ -713,9 +713,12 @@
     }
 
     .branding-left {
-        flex-direction: column;
         gap: 10px;
         justify-content: center;
+    }
+
+    .brand-text-col {
+        text-align: left;
     }
 
     .brand-divider {
@@ -758,12 +761,17 @@
         font-size: 20px;
     }
 
-    .ncb-logo-main {
-        height: 50px;
-    }
-
     .campaign-logos {
         display: none;
         /* Hide campaign logos on very small screens */
+    }
+
+    .ncb-logo-main {
+        height: 65px;
+    }
+
+    .gov-emblem {
+        height: 50px;
+        display: none;
     }
 }
