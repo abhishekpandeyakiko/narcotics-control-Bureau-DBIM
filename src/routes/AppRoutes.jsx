@@ -5,6 +5,10 @@ import About from "../pages/About";
 import Contact from "../pages/Contact";
 import OfficersStaff from "../pages/OfficersStaff";
 import OrganizationStructure from "../pages/OrganizationStructure";
+import LatestNews from "../pages/LatestNews";
+import RTI from "../pages/RTI";
+import Tenders from "../pages/Tenders";
+import PressRelease from "../pages/PressRelease";
 
 function AppRoutes() {
     return (
@@ -37,10 +41,46 @@ function AppRoutes() {
             />
 
             <Route
+                path="/media/latest-news"
+                element={
+                    <MainLayout>
+                        <LatestNews />
+                    </MainLayout>
+                }
+            />
+
+            <Route
+                path="/media/press-release"
+                element={
+                    <MainLayout>
+                        <PressRelease />
+                    </MainLayout>
+                }
+            />
+
+            <Route
                 path="/contact"
                 element={
                     <MainLayout>
                         <Contact />
+                    </MainLayout>
+                }
+            />
+
+            <Route
+                path="/rti"
+                element={
+                    <MainLayout>
+                        <RTI />
+                    </MainLayout>
+                }
+            />
+
+            <Route
+                path="/tenders"
+                element={
+                    <MainLayout>
+                        <Tenders />
                     </MainLayout>
                 }
             />

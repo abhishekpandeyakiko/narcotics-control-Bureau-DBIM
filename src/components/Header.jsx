@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import "../styles/Navbar.scss";
 
@@ -9,6 +9,39 @@ function Header() {
     const [isMediaOpen, setIsMediaOpen] = useState(false);
     const [isDirectoryOpen, setIsDirectoryOpen] = useState(false);
     const [isAboutOpen, setIsAboutOpen] = useState(false);
+    const [isNoticeBoardOpen, setIsNoticeBoardOpen] = useState(false);
+    const location = useLocation();
+
+    const isMediaActive = () => {
+        const mediaRoutes = [
+            "/media",
+            "/media/awareness-videos",
+            "/media/photo-gallery",
+            "/media/video-gallery"
+        ];
+        return mediaRoutes.some(path => location.pathname === path);
+    };
+
+    const isNoticeBoardActive = () => {
+        const noticeRoutes = [
+            "/notice-board",
+            "/media/latest-news",
+            "/media/press-release",
+            "/tenders",
+            "/media/former-head"
+        ];
+        return noticeRoutes.some(path => location.pathname === path);
+    };
+
+    const isAboutActive = () => {
+        const aboutRoutes = ["/about", "/organization"];
+        return aboutRoutes.some(path => location.pathname === path);
+    };
+
+    const isDirectoryActive = () => {
+        const dirRoutes = ["/directory", "/directory/officers-staff"];
+        return dirRoutes.some(path => location.pathname === path);
+    };
 
     const toggleLanguage = () => {
         setLanguage((prev) => (prev === "English" ? "Hindi" : "English"));
@@ -24,6 +57,17 @@ function Header() {
             e.preventDefault();
             setIsMediaOpen(!isMediaOpen);
             setIsDirectoryOpen(false);
+            setIsNoticeBoardOpen(false);
+        }
+    };
+
+    const toggleNoticeBoardAccordion = (e) => {
+        if (window.innerWidth <= 992) {
+            e.preventDefault();
+            setIsNoticeBoardOpen(!isNoticeBoardOpen);
+            setIsAboutOpen(false);
+            setIsMediaOpen(false);
+            setIsDirectoryOpen(false);
         }
     };
 
@@ -33,6 +77,7 @@ function Header() {
             setIsDirectoryOpen(!isDirectoryOpen);
             setIsMediaOpen(false);
             setIsAboutOpen(false);
+            setIsNoticeBoardOpen(false);
         }
     };
 
@@ -42,6 +87,7 @@ function Header() {
             setIsAboutOpen(!isAboutOpen);
             setIsMediaOpen(false);
             setIsDirectoryOpen(false);
+            setIsNoticeBoardOpen(false);
         }
     };
 
@@ -139,7 +185,7 @@ function Header() {
                                 </NavLink>
                             </li>
                             <li className={`nav-dropdown-li ${isAboutOpen ? "accordion-open" : ""}`}>
-                                <NavLink to="/about" className="nav-item" onClick={toggleAboutAccordion}>
+                                <NavLink to="/about" className={`nav-item ${isAboutActive() ? "active" : ""}`} onClick={toggleAboutAccordion}>
                                     About NCB <span className="dropdown-arrow">▾</span>
                                 </NavLink>
                                 <ul className="dropdown-menu">
@@ -148,16 +194,15 @@ function Header() {
                                 </ul>
                             </li>
                             <li className={`nav-dropdown-li ${isMediaOpen ? "accordion-open" : ""}`}>
-                                <NavLink to="/media" className="nav-item" onClick={toggleMediaAccordion}>
+                                <NavLink to="/media" className={`nav-item ${isMediaActive() ? "active" : ""}`} onClick={toggleMediaAccordion}>
                                     Media <span className="dropdown-arrow">▾</span>
                                 </NavLink>
                                 <ul className="dropdown-menu">
-                                    <li><NavLink to="/media/latest-news" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Latest News</NavLink></li>
+
                                     <li><NavLink to="/media/awareness-videos" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Awareness Videos</NavLink></li>
                                     <li><NavLink to="/media/photo-gallery" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Photo Gallery</NavLink></li>
                                     <li><NavLink to="/media/video-gallery" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Video Gallery</NavLink></li>
-                                    <li><NavLink to="/media/press-release" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Press Release</NavLink></li>
-                                    <li><NavLink to="/media/former-head" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Former NCB Head</NavLink></li>
+
                                 </ul>
                             </li>
                             <li>
@@ -175,8 +220,24 @@ function Header() {
                                     Contact
                                 </NavLink>
                             </li>
+                            <li>
+                                <NavLink to="/rti" className="nav-item" onClick={() => setIsMenuOpen(false)}>
+                                    RTI
+                                </NavLink>
+                            </li>
+                            <li className={`nav-dropdown-li ${isNoticeBoardOpen ? "accordion-open" : ""}`}>
+                                <NavLink to="/notice-board" className={`nav-item ${isNoticeBoardActive() ? "active" : ""}`} onClick={toggleNoticeBoardAccordion}>
+                                    Notice Board <span className="dropdown-arrow">▾</span>
+                                </NavLink>
+                                <ul className="dropdown-menu">
+                                    <li><NavLink to="/media/latest-news" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Latest News</NavLink></li>
+                                    <li><NavLink to="/media/press-release" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Press Release</NavLink></li>
+                                    <li><NavLink to="/tenders" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Tender</NavLink></li>
+                                    <li><NavLink to="/media/former-head" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Former NCB Head</NavLink></li>
+                                </ul>
+                            </li>
                             <li className={`nav-dropdown-li ${isDirectoryOpen ? "accordion-open" : ""}`}>
-                                <NavLink to="/directory" className="nav-item" onClick={toggleDirectoryAccordion}>
+                                <NavLink to="/directory" className={`nav-item ${isDirectoryActive() ? "active" : ""}`} onClick={toggleDirectoryAccordion}>
                                     Directory <span className="dropdown-arrow">▾</span>
                                 </NavLink>
                                 <ul className="dropdown-menu">

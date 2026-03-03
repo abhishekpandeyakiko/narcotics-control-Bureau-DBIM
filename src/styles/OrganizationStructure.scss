@@ -2,7 +2,7 @@
 
 .org-structure-wrapper {
     background: radial-gradient(circle at 50% 50%, #f8fafc 0%, #edf2f7 100%);
-    padding: 0 0 120px 0;
+    padding: 0 0 50px 0;
     min-height: 100vh;
     position: relative;
     overflow: hidden;
@@ -74,7 +74,7 @@
 
     .org-chart-container {
         overflow-x: auto;
-        padding: 60px 20px;
+        // padding: 60px 20px;
         -webkit-overflow-scrolling: touch;
         background: rgba(255, 255, 255, 0.4);
         backdrop-filter: blur(20px);
@@ -161,6 +161,11 @@
             width: 0;
             height: 50px;
         }
+    }
+
+    // Remove the line above the root node
+    >ul::before {
+        display: none;
     }
 
     li {
