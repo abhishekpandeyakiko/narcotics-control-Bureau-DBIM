@@ -95,9 +95,8 @@ function About() {
                         <div className="col-lg-9">
                             <h2 className="section-title center">The birth of NCB</h2>
                             <p className="establishment-date">17 March 1986</p>
-                            <p className="text-on-dark mt-4">
-                                The Government of India constituted the <strong>Narcotics Control Bureau</strong> in response to the express provision of the NDPS Act, 1985.
-                                Subject to the supervision and control of the Central Government, the Bureau exercises the powers and functions of the Central Government to combat drug abuse and illicit traffic.
+                            <p className="text-on-dark">
+                                Formed under the <strong>NDPS Act, 1985</strong>, the Narcotics Control Bureau is the apex coordinating agency under the Central Government, tasked with combating drug abuse and illicit trafficking nationwide.
                             </p>
                         </div>
                     </div>
@@ -111,8 +110,14 @@ function About() {
                         <div className="col-lg-5">
                             <h2 className="section-title">Core Mandate & Functions</h2>
                             <p className="lead-text">
-                                As the apex coordinating agency, the NCB is tasked with critical responsibilities at state, national, and international levels.
+                                The Narcotic Drugs and Psychotropic Substances Act, 1985 provides for a Central Authority to exercise the powers and functions of the Central Government.
                             </p>
+                            <div className="nodal-box p-4 rounded-4 bg-light shadow-sm border-start border-primary border-4 mb-4">
+                                <h6 className="fw-bold text-primary mb-2">Nodal Coordination Role</h6>
+                                <p className="small text-muted mb-0">
+                                    The responsibility of drug abuse control is carried out through the <strong>Ministry of Finance, Department of Revenue</strong>, which acts as the nodal administrator of the NDPS and PITNDPS Acts.
+                                </p>
+                            </div>
                         </div>
                         <div className="col-lg-7">
                             <div className="ps-lg-5">
@@ -120,29 +125,29 @@ function About() {
                                     <li>
                                         <i className="bi bi-diagram-3-fill fs-4"></i>
                                         <div>
-                                            <h5 className="fw-bold">Coordination of Actions</h5>
-                                            <p className="text-muted mb-0">Unifying efforts between various offices, State Governments, and authorities under NDPS, Customs, and Drugs & Cosmetics Acts.</p>
+                                            <h5 className="fw-bold">Coordination of Enforcement</h5>
+                                            <p className="text-muted mb-0">Unifying actions by various offices, State Governments, and authorities under the N.D.P.S. Act, Customs Act, Drugs and Cosmetics Act, and any other relevant laws in force.</p>
                                         </div>
                                     </li>
                                     <li>
                                         <i className="bi bi-globe-americas fs-4"></i>
                                         <div>
                                             <h5 className="fw-bold">International Obligations</h5>
-                                            <p className="text-muted mb-0">Implementing counter measures against illicit traffic under international conventions and protocols ratified by India.</p>
+                                            <p className="text-muted mb-0">Implementing counter-measures against illicit traffic under all current and future international conventions and protocols ratified or acceded to by India.</p>
                                         </div>
                                     </li>
                                     <li>
                                         <i className="bi bi-people-fill fs-4"></i>
                                         <div>
                                             <h5 className="fw-bold">Universal Action</h5>
-                                            <p className="text-muted mb-0">Assisting foreign authorities and international organisations to facilitate universal action for prevention and suppression of traffic.</p>
+                                            <p className="text-muted mb-0">Assisting foreign authorities and international organisations to facilitate universal coordination for the prevention and suppression of illicit drug traffic.</p>
                                         </div>
                                     </li>
                                     <li>
                                         <i className="bi bi-building-gear fs-4"></i>
                                         <div>
-                                            <h5 className="fw-bold">Inter-Ministerial Unity</h5>
-                                            <p className="text-muted mb-0">Coordinating actions by other concerned Ministries, Departments, and Organizations in drug abuse matters.</p>
+                                            <h5 className="fw-bold">Inter-Ministerial Synergy</h5>
+                                            <p className="text-muted mb-0">Coordinating actions by all concerned Ministries, Departments, and Organizations in respect of matters relating to the suppression of drug abuse.</p>
                                         </div>
                                     </li>
                                 </ul>
