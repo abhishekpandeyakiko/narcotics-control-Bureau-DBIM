@@ -1,0 +1,90 @@
+@import "variables";
+
+.page-banner-premium {
+    background: linear-gradient(135deg, $primary-blue 0%, $dark-navy 100%);
+    padding: 80px 0 10px;
+    color: $white;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 10% 20%, rgba($hq-accent, 0.05) 0%, transparent 40%);
+        pointer-events: none;
+    }
+
+    .banner-inner {
+        position: relative;
+        z-index: 2;
+    }
+
+    .banner-title {
+        text-align: center; // Center Title
+        font-size: 36px;
+        font-weight: 800;
+        margin-bottom: 8px;
+        letter-spacing: -1px;
+
+        span {
+            color: $hq-accent;
+        }
+    }
+
+    .banner-subtitle {
+        text-align: center; // Center Subtitle
+        font-size: 15px;
+        color: $text-on-dark;
+        opacity: 0.75;
+        margin-bottom: 20px;
+    }
+
+    .breadcrumb-nav {
+        display: flex;
+        justify-content: flex-start; // Keep left-aligned
+        margin-top: 15px;
+
+        .breadcrumb-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba($white, 0.03);
+            padding: 4px 12px; // More compact padding
+            border-radius: 6px;
+            border: 1px solid rgba($white, 0.08);
+
+            li {
+                font-size: 11px; // Smaller font size
+                font-weight: 500;
+                color: rgba($white, 0.4);
+
+                a {
+                    color: rgba($white, 0.5);
+                    text-decoration: none;
+                    transition: color 0.3s ease;
+
+                    &:hover {
+                        color: $hq-accent;
+                    }
+                }
+
+                &.separator {
+                    opacity: 0.2;
+                    font-size: 9px;
+                    margin: 0 2px;
+                }
+
+                &.active {
+                    color: rgba($white, 0.8);
+                }
+            }
+        }
+    }
+}
