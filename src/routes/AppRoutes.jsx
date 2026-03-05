@@ -9,6 +9,11 @@ import LatestNews from "../pages/LatestNews";
 import RTI from "../pages/RTI";
 import Tenders from "../pages/Tenders";
 import PressRelease from "../pages/PressRelease";
+import AwarenessVideos from "../pages/AwarenessVideos";
+import PhotoGallery from "../pages/PhotoGallery";
+import VideoGallery from "../pages/VideoGallery";
+import FormerHeads from "../pages/FormerHeads";
+import Legislations from "../pages/Legislations";
 
 function AppRoutes() {
     return (
@@ -59,6 +64,33 @@ function AppRoutes() {
             />
 
             <Route
+                path="/media/photo-gallery"
+                element={
+                    <MainLayout>
+                        <PhotoGallery />
+                    </MainLayout>
+                }
+            />
+
+            <Route
+                path="/media/video-gallery"
+                element={
+                    <MainLayout>
+                        <VideoGallery />
+                    </MainLayout>
+                }
+            />
+
+            <Route
+                path="/media/awareness-videos"
+                element={
+                    <MainLayout>
+                        <AwarenessVideos />
+                    </MainLayout>
+                }
+            />
+
+            <Route
                 path="/contact"
                 element={
                     <MainLayout>
@@ -90,6 +122,22 @@ function AppRoutes() {
                 element={
                     <MainLayout>
                         <OfficersStaff />
+                    </MainLayout>
+                }
+            />
+            <Route
+                path="/media/former-head"
+                element={
+                    <MainLayout>
+                        <FormerHeads />
+                    </MainLayout>
+                }
+            />
+            <Route
+                path="/legislations"
+                element={
+                    <MainLayout>
+                        <Legislations />
                     </MainLayout>
                 }
             />

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import PageBanner from "../components/PageBanner";
 import "../styles/LatestNews.scss"; // Reusing the same beautiful styles
 
@@ -80,7 +79,6 @@ const pressReleaseData = [
 ];
 
 function PressRelease() {
-    const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [searchTitle, setSearchTitle] = useState("");
@@ -153,7 +151,7 @@ function PressRelease() {
 
             <section className="archive-main-section">
                 <div className="container">
-                    <div className="archive-header-v2">
+                    {/* <div className="archive-header-v2">
                         <span className="top-label">OFFICIAL ARCHIVE</span>
                         <h2>Archive Press Release</h2>
                         <div className="divider-v3">
@@ -161,10 +159,10 @@ function PressRelease() {
                             <span className="dot"></span>
                             <span className="line"></span>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* Search & Filter Box */}
-                    <div className="archive-filter-panel">
+                    <div className="archive-filter-panel mt-4">
                         <div className="row g-3 align-items-end">
                             <div className="col-lg-4 col-md-12">
                                 <label>Title</label>

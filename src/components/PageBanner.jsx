@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Banner.scss";
 
-const PageBanner = ({ title, highlightWord, subtitle, breadcrumbLink, breadcrumbLabel }) => {
+const PageBanner = ({ title, highlightWord, subtitle, breadcrumbLabel }) => {
     return (
         <section className="page-banner-premium">
             <div className="container">

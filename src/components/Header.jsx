@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import logo from "../assets/logo.svg";
+
 import "../styles/Navbar.scss";
 
 function Header() {
@@ -10,6 +10,10 @@ function Header() {
     const [isDirectoryOpen, setIsDirectoryOpen] = useState(false);
     const [isAboutOpen, setIsAboutOpen] = useState(false);
     const [isNoticeBoardOpen, setIsNoticeBoardOpen] = useState(false);
+    const [isOperationsOpen, setIsOperationsOpen] = useState(false);
+    const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+    const [isDLEAOpen, setIsDLEAOpen] = useState(false);
+    const [isHandBookOpen, setIsHandBookOpen] = useState(false);
     const location = useLocation();
 
     const isMediaActive = () => {
@@ -17,7 +21,13 @@ function Header() {
             "/media",
             "/media/awareness-videos",
             "/media/photo-gallery",
-            "/media/video-gallery"
+            "/media/video-gallery",
+            "/media/visitor-photos",
+            "/media/officer-visits",
+            "/publication",
+            "/awareness/spandan",
+            "/awareness/cbse-mou",
+            "/media/annual-reports"
         ];
         return mediaRoutes.some(path => location.pathname === path);
     };
@@ -25,22 +35,45 @@ function Header() {
     const isNoticeBoardActive = () => {
         const noticeRoutes = [
             "/notice-board",
+            "/latest-news",
+            "/press-release",
+            "/tenders",
+            "/former-head",
+            "/circulars",
+            "/notifications",
+            "/recruitment-rules",
+            "/draft-recruitment-rules",
+            "/judgements",
             "/media/latest-news",
             "/media/press-release",
-            "/tenders",
             "/media/former-head"
         ];
         return noticeRoutes.some(path => location.pathname === path);
     };
 
     const isAboutActive = () => {
-        const aboutRoutes = ["/about", "/organization"];
+        const aboutRoutes = ["/about", "/organization", "/legislations", "/coordination", "/vigilance", "/bilateral-agreements", "/mou", "/motto-mission-vision"];
         return aboutRoutes.some(path => location.pathname === path);
     };
 
+    const isOperationsActive = () => {
+        const opRoutes = ["/policy-strategy", "/drugs-of-abuse", "/seizures", "/disposal-of-drugs", "/training"];
+        return opRoutes.some(path => location.pathname === path);
+    };
+
     const isDirectoryActive = () => {
-        const dirRoutes = ["/directory", "/directory/officers-staff"];
+        const dirRoutes = ["/directory", "/directory/officers-staff", "/employee-corner"];
         return dirRoutes.some(path => location.pathname === path);
+    };
+
+    const isResourcesActive = () => {
+        const resRoutes = ["/rti", "/download-forms", "/forensic-labs", "/rehab-centres", "/related-links"];
+        return resRoutes.some(path => location.pathname === path);
+    };
+
+    const isDLEAActive = () => {
+        const dleaRoutes = ["/dlea/handbook-en", "/dlea/handbook-hi", "/dlea/handbook-pj"];
+        return dleaRoutes.some(path => location.pathname.startsWith(path));
     };
 
     const toggleLanguage = () => {
@@ -49,45 +82,97 @@ function Header() {
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
-        if (isMenuOpen) setIsMediaOpen(false); // Reset accordion on close
+        if (isMenuOpen) {
+            setIsMediaOpen(false);
+            setIsAboutOpen(false);
+            setIsDirectoryOpen(false);
+            setIsNoticeBoardOpen(false);
+            setIsOperationsOpen(false);
+            setIsResourcesOpen(false);
+            setIsDLEAOpen(false);
+            setIsHandBookOpen(false);
+        }
+    };
+
+    const resetAccordions = () => {
+        setIsAboutOpen(false);
+        setIsMediaOpen(false);
+        setIsDirectoryOpen(false);
+        setIsNoticeBoardOpen(false);
+        setIsOperationsOpen(false);
+        setIsResourcesOpen(false);
+        setIsDLEAOpen(false);
+        setIsHandBookOpen(false);
     };
 
     const toggleMediaAccordion = (e) => {
         if (window.innerWidth <= 992) {
             e.preventDefault();
-            setIsMediaOpen(!isMediaOpen);
-            setIsDirectoryOpen(false);
-            setIsNoticeBoardOpen(false);
+            const targetState = !isMediaOpen;
+            resetAccordions();
+            setIsMediaOpen(targetState);
         }
     };
 
     const toggleNoticeBoardAccordion = (e) => {
         if (window.innerWidth <= 992) {
             e.preventDefault();
-            setIsNoticeBoardOpen(!isNoticeBoardOpen);
-            setIsAboutOpen(false);
-            setIsMediaOpen(false);
-            setIsDirectoryOpen(false);
+            const targetState = !isNoticeBoardOpen;
+            resetAccordions();
+            setIsNoticeBoardOpen(targetState);
         }
     };
 
     const toggleDirectoryAccordion = (e) => {
         if (window.innerWidth <= 992) {
             e.preventDefault();
-            setIsDirectoryOpen(!isDirectoryOpen);
-            setIsMediaOpen(false);
-            setIsAboutOpen(false);
-            setIsNoticeBoardOpen(false);
+            const targetState = !isDirectoryOpen;
+            resetAccordions();
+            setIsDirectoryOpen(targetState);
         }
     };
 
     const toggleAboutAccordion = (e) => {
         if (window.innerWidth <= 992) {
             e.preventDefault();
-            setIsAboutOpen(!isAboutOpen);
-            setIsMediaOpen(false);
-            setIsDirectoryOpen(false);
-            setIsNoticeBoardOpen(false);
+            const targetState = !isAboutOpen;
+            resetAccordions();
+            setIsAboutOpen(targetState);
+        }
+    };
+
+    const toggleOperationsAccordion = (e) => {
+        if (window.innerWidth <= 992) {
+            e.preventDefault();
+            const targetState = !isOperationsOpen;
+            resetAccordions();
+            setIsOperationsOpen(targetState);
+        }
+    };
+
+    const toggleResourcesAccordion = (e) => {
+        if (window.innerWidth <= 992) {
+            e.preventDefault();
+            const targetState = !isResourcesOpen;
+            resetAccordions();
+            setIsResourcesOpen(targetState);
+        }
+    };
+
+    const toggleDLEAAccordion = (e) => {
+        if (window.innerWidth <= 992) {
+            e.preventDefault();
+            const targetState = !isDLEAOpen;
+            resetAccordions();
+            setIsDLEAOpen(targetState);
+        }
+    };
+
+    const toggleHandBookAccordion = (e) => {
+        if (window.innerWidth <= 992) {
+            e.stopPropagation();
+            e.preventDefault();
+            setIsHandBookOpen(!isHandBookOpen);
         }
     };
 
@@ -190,29 +275,107 @@ function Header() {
                                 </NavLink>
                                 <ul className="dropdown-menu">
                                     <li><NavLink to="/about" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Profile</NavLink></li>
-                                    <li><NavLink to="/organization" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Organization Structure</NavLink></li>
+                                    <li><NavLink to="/motto-mission-vision" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Motto, Mission & Vision</NavLink></li>
+                                    <li><NavLink to="/organization" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Organisation</NavLink></li>
+                                    <li><NavLink to="/legislations" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Legislations and Directive Principles</NavLink></li>
+                                    <li><NavLink to="/coordination" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Coordination</NavLink></li>
+                                    <li><NavLink to="/bilateral-agreements" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Bilateral Agreements</NavLink></li>
+                                    <li><NavLink to="/mou" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>MoUs</NavLink></li>
+                                    <li><NavLink to="/vigilance" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Vigilance Section</NavLink></li>
                                 </ul>
                             </li>
+
+                            <li className={`nav-dropdown-li ${isOperationsOpen ? "accordion-open" : ""}`}>
+                                <NavLink to="/policy-strategy" className={`nav-item ${isOperationsActive() ? "active" : ""}`} onClick={toggleOperationsAccordion}>
+                                    Operations <span className="dropdown-arrow">▾</span>
+                                </NavLink>
+                                <ul className="dropdown-menu">
+                                    <li><NavLink to="/policy-strategy" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Policy Strategy & Mechanism</NavLink></li>
+                                    <li><NavLink to="/drugs-of-abuse" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Drugs of Abuse</NavLink></li>
+                                    <li><NavLink to="/seizures" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Important Seizures</NavLink></li>
+                                    <li><NavLink to="/disposal-of-drugs" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Disposal of Drugs</NavLink></li>
+                                    <li><NavLink to="/training" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Training</NavLink></li>
+                                </ul>
+                            </li>
+
                             <li className={`nav-dropdown-li ${isMediaOpen ? "accordion-open" : ""}`}>
                                 <NavLink to="/media" className={`nav-item ${isMediaActive() ? "active" : ""}`} onClick={toggleMediaAccordion}>
                                     Media <span className="dropdown-arrow">▾</span>
                                 </NavLink>
                                 <ul className="dropdown-menu">
-
+                                    <li><NavLink to="/media/press-release" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Press Release</NavLink></li>
+                                    <li><NavLink to="/awareness/spandan" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Awareness Drive - Mission SPANDAN</NavLink></li>
                                     <li><NavLink to="/media/awareness-videos" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Awareness Videos</NavLink></li>
+                                    <li><NavLink to="/awareness/cbse-mou" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>MoU with CBSE</NavLink></li>
+                                    <li><NavLink to="/publication" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>NARCONTROL (NCB Magazine)</NavLink></li>
+                                    <li><NavLink to="/media/annual-reports" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Annual Reports</NavLink></li>
                                     <li><NavLink to="/media/photo-gallery" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Photo Gallery</NavLink></li>
                                     <li><NavLink to="/media/video-gallery" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Video Gallery</NavLink></li>
-
+                                    <li><NavLink to="/media/visitor-photos" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Important Visitor's Photo</NavLink></li>
+                                    <li><NavLink to="/media/officer-visits" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Visits of NCB Officers</NavLink></li>
                                 </ul>
                             </li>
+
+                            <li className={`nav-dropdown-li ${isNoticeBoardOpen ? "accordion-open" : ""}`}>
+                                <NavLink to="/notice-board" className={`nav-item ${isNoticeBoardActive() ? "active" : ""}`} onClick={toggleNoticeBoardAccordion}>
+                                    Notice Board <span className="dropdown-arrow">▾</span>
+                                </NavLink>
+                                <ul className="dropdown-menu">
+                                    <li><NavLink to="/media/latest-news" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Latest News</NavLink></li>
+                                    <li><NavLink to="/circulars" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Circulars/Orders</NavLink></li>
+                                    <li><NavLink to="/notifications" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Notifications</NavLink></li>
+                                    <li><NavLink to="/tenders" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Tenders</NavLink></li>
+                                    <li><NavLink to="/recruitment-rules" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Recruitment Rules</NavLink></li>
+                                    <li><NavLink to="/draft-recruitment-rules" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Draft Recruitment Rules</NavLink></li>
+                                    <li><NavLink to="/judgements" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Important Judgements</NavLink></li>
+                                    <li><NavLink to="/media/former-head" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Former NCB Head</NavLink></li>
+                                </ul>
+                            </li>
+
+                            <li className={`nav-dropdown-li ${isDirectoryOpen ? "accordion-open" : ""}`}>
+                                <NavLink to="/directory" className={`nav-item ${isDirectoryActive() ? "active" : ""}`} onClick={toggleDirectoryAccordion}>
+                                    Directory <span className="dropdown-arrow">▾</span>
+                                </NavLink>
+                                <ul className="dropdown-menu">
+                                    <li><NavLink to="/directory/officers-staff" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Officers/Staff</NavLink></li>
+                                    <li><NavLink to="/employee-corner" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Employee Corner</NavLink></li>
+                                </ul>
+                            </li>
+
+                            <li className={`nav-dropdown-li ${isResourcesOpen ? "accordion-open" : ""}`}>
+                                <NavLink to="/rti" className={`nav-item ${isResourcesActive() ? "active" : ""}`} onClick={toggleResourcesAccordion}>
+                                    Resources <span className="dropdown-arrow">▾</span>
+                                </NavLink>
+                                <ul className="dropdown-menu">
+                                    <li><NavLink to="/rti" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>RTI</NavLink></li>
+                                    <li><NavLink to="/forensic-labs" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Forensic Science Laboratories in India</NavLink></li>
+                                    <li><NavLink to="/rehab-centres" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Drug Rehabilitation Centres in India</NavLink></li>
+                                    <li><NavLink to="/download-forms" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Download Forms</NavLink></li>
+                                    <li><NavLink to="/related-links" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Related Links</NavLink></li>
+                                </ul>
+                            </li>
+
+                            <li className={`nav-dropdown-li ${isDLEAOpen ? "accordion-open" : ""}`}>
+                                <NavLink to="/dlea" className={`nav-item ${isDLEAActive() ? "active" : ""}`} onClick={toggleDLEAAccordion}>
+                                    DLEA <span className="dropdown-arrow">▾</span>
+                                </NavLink>
+                                <ul className="dropdown-menu">
+                                    <li className={`nested-dropdown-li ${isHandBookOpen ? "nested-open" : ""}`}>
+                                        <button className="dropdown-item d-flex justify-content-between align-items-center w-100 border-0 bg-transparent text-start" onClick={toggleHandBookAccordion}>
+                                            Hand Book <span className="dropdown-arrow">▾</span>
+                                        </button>
+                                        <ul className="nested-menu">
+                                            <li><NavLink to="/dlea/handbook-en" className="dropdown-item small-text" onClick={() => setIsMenuOpen(false)}>Drug Law Enforcement Field Officer's Hand Book</NavLink></li>
+                                            <li><NavLink to="/dlea/handbook-hi" className="dropdown-item small-text" onClick={() => setIsMenuOpen(false)}>ड्रग विधि प्रवर्तन क्षेत्रीय अधिकारियों की हस्तपुस्तिका</NavLink></li>
+                                            <li><NavLink to="/dlea/handbook-pj" className="dropdown-item small-text" onClick={() => setIsMenuOpen(false)}>Drug Law Enforcement Field Officer's Hand Book in Punjabi</NavLink></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
                             <li>
                                 <NavLink to="/career" className="nav-item" onClick={() => setIsMenuOpen(false)}>
                                     Career
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dlea" className="nav-item" onClick={() => setIsMenuOpen(false)}>
-                                    DLEA
                                 </NavLink>
                             </li>
                             <li>
@@ -220,30 +383,7 @@ function Header() {
                                     Contact
                                 </NavLink>
                             </li>
-                            <li>
-                                <NavLink to="/rti" className="nav-item" onClick={() => setIsMenuOpen(false)}>
-                                    RTI
-                                </NavLink>
-                            </li>
-                            <li className={`nav-dropdown-li ${isNoticeBoardOpen ? "accordion-open" : ""}`}>
-                                <NavLink to="/notice-board" className={`nav-item ${isNoticeBoardActive() ? "active" : ""}`} onClick={toggleNoticeBoardAccordion}>
-                                    Notice Board <span className="dropdown-arrow">▾</span>
-                                </NavLink>
-                                <ul className="dropdown-menu">
-                                    <li><NavLink to="/media/latest-news" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Latest News</NavLink></li>
-                                    <li><NavLink to="/media/press-release" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Press Release</NavLink></li>
-                                    <li><NavLink to="/tenders" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Tender</NavLink></li>
-                                    <li><NavLink to="/media/former-head" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Former NCB Head</NavLink></li>
-                                </ul>
-                            </li>
-                            <li className={`nav-dropdown-li ${isDirectoryOpen ? "accordion-open" : ""}`}>
-                                <NavLink to="/directory" className={`nav-item ${isDirectoryActive() ? "active" : ""}`} onClick={toggleDirectoryAccordion}>
-                                    Directory <span className="dropdown-arrow">▾</span>
-                                </NavLink>
-                                <ul className="dropdown-menu">
-                                    <li><NavLink to="/directory/officers-staff" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Officers/Staff</NavLink></li>
-                                </ul>
-                            </li>
+
                             <li className="nav-action-li">
                                 <button className="submit-tip-nav-btn">
                                     <span className="btn-icon">📢</span>

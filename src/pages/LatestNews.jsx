@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import PageBanner from "../components/PageBanner";
 import "../styles/LatestNews.scss";
 
@@ -31,15 +31,24 @@ const newsData = [
 ];
 
 function LatestNews() {
+    const [searchTerm, setSearchTerm] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [isTransitioning, setIsTransitioning] = useState(false);
     const itemsPerPage = 12;
 
+    const filteredItems = useMemo(() => {
+        return newsData.filter(item =>
+            item.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    }, [searchTerm]);
+
+
+
     // Logic for pagination
+    const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = newsData.slice(indexOfFirstItem, indexOfLastItem);
-    const totalPages = Math.ceil(newsData.length / itemsPerPage);
+    const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
 
     const paginate = (pageNumber) => {
         setIsTransitioning(true);
@@ -81,31 +90,75 @@ function LatestNews() {
 
             <section className="news-section">
                 <div className="container">
-                    <div className="news-header-v2">
-                        <span className="top-label">OFFICIAL UPDATES</span>
-                        <h2>Latest Announcements</h2>
-                        <div className="section-divider">
-                            <span className="line"></span>
-                            <span className="dot"></span>
-                            <span className="line"></span>
+                    {/* Controls - Premium Search & Info Layout */}
+                    <div className="controls-row-premium row align-items-center mx-0 mb-4 g-3">
+                        <div className="col-md mt-0">
+                            <h3 className="h6 fw-bold text-dark mb-0 d-flex align-items-center gap-2">
+                                News Archive
+                                <span className="badge rounded-pill bg-light text-primary border px-2 px-md-3">
+                                    {filteredItems.length} Items
+                                </span>
+                            </h3>
+                        </div>
+                        <div className="col-md-auto mt-0">
+                            <div className="premium-search-box">
+                                <i className="bi bi-search search-icon"></i>
+                                <input
+                                    type="text"
+                                    className="search-input"
+                                    placeholder="Search news..."
+                                    value={searchTerm}
+                                    onChange={(e) => {
+                                        setSearchTerm(e.target.value);
+                                        setCurrentPage(1);
+                                    }}
+                                />
+                                {searchTerm && (
+                                    <button
+                                        className="clear-search-btn"
+                                        onClick={() => setSearchTerm("")}
+                                        title="Clear search"
+                                    >
+                                        <i className="bi bi-x-circle-fill"></i>
+                                    </button>
+                                )}
+                            </div>
                         </div>
                     </div>
 
-                    <div className={`row g-2 news-grid-items ${isTransitioning ? 'transitioning' : ''}`}>
-                        {currentItems.map((item) => (
-                            <div className="col-xl-3 col-lg-4 col-md-6" key={item.id}>
-                                <div className="news-card-v2">
-                                    <div className="card-icon-wrapper">
-                                        <i className="bi bi-link-45deg"></i>
+                    {filteredItems.length > 0 ? (
+                        <div className={`row g-2 news-grid-items ${isTransitioning ? 'transitioning' : ''}`}>
+                            {currentItems.map((item) => (
+                                <div className="col-xl-3 col-lg-4 col-md-6" key={item.id}>
+                                    <div className="news-card-v2">
+                                        <div className="card-icon-wrapper">
+                                            <i className="bi bi-link-45deg"></i>
+                                        </div>
+                                        <h3 className="card-title">{item.title}</h3>
+                                        <a href="#" className="btn-view-link">
+                                            View Link
+                                        </a>
                                     </div>
-                                    <h3 className="card-title">{item.title}</h3>
-                                    <a href="#" className="btn-view-link">
-                                        View Link
-                                    </a>
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="row justify-content-center py-5 my-5">
+                            <div className="col-lg-7 text-center">
+                                <div className="no-results-content bg-white p-5 rounded-4 shadow-sm border border-dashed mx-auto">
+                                    <i className="bi bi-search display-1 mb-3 d-block text-muted opacity-25"></i>
+                                    <h4 className="fw-bold text-dark mb-2">No News Found</h4>
+                                    <p className="text-muted mb-4 text-break px-md-5">
+                                        We couldn't find any news matching <strong>"{searchTerm}"</strong>.
+                                        Please try different keywords.
+                                    </p>
+                                    <button className="btn btn-primary rounded-pill px-5 fw-bold shadow-sm" onClick={() => setSearchTerm("")}>
+                                        Show All News
+                                    </button>
                                 </div>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    )}
 
                     {/* Pagination UI */}
                     {totalPages > 1 && (

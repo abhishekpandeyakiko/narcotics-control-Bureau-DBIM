@@ -314,6 +314,140 @@
             background: linear-gradient(to top, rgba($primary-blue, 0.4), transparent);
         }
     }
+
+    // Legislations Page Specific Styles
+    &.legislation-page {
+        .bg-primary-soft {
+            background-color: rgba($vibrant-blue, 0.1);
+        }
+
+        .bg-secondary-soft {
+            background-color: rgba($text-muted, 0.1);
+        }
+
+        .text-vibrant {
+            color: $vibrant-blue;
+        }
+
+        .legislation-sidebar {
+            position: sticky;
+            top: 100px;
+
+            .nav-link {
+                padding: 12px 20px;
+                color: #475569;
+                font-size: 0.95rem;
+                border: none;
+                background: none;
+                width: 100%;
+
+                &.active {
+                    background: $primary-blue !important;
+                    color: white !important;
+                }
+
+                &:hover:not(.active) {
+                    background: $bg-light;
+                    color: $primary-blue;
+                }
+            }
+        }
+
+        .legislation-content-card {
+            min-height: 500px;
+        }
+
+        .custom-leg-table {
+            tr {
+                transition: background 0.2s ease;
+
+                &:hover {
+                    background-color: rgba($vibrant-blue, 0.02);
+                }
+            }
+
+            th {
+                text-transform: uppercase;
+                font-size: 0.75rem;
+                letter-spacing: 1px;
+                color: #64748b;
+                font-weight: 700;
+            }
+        }
+
+        .btn-view-pdf-modern {
+            padding: 8px 18px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
+            text-decoration: none;
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 15px rgba(239, 68, 68, 0.3);
+                background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+                color: #ffffff;
+            }
+        }
+
+        .hover-leg-card {
+            border: 1px solid rgba(0, 0, 0, 0.05);
+
+            &:hover {
+                border-color: rgba($vibrant-blue, 0.2);
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+            }
+        }
+
+        .icon-rounded {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .badge-notif {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .content-fade-in {
+            animation: fadeInLeg 0.4s ease-out;
+        }
+
+        @keyframes fadeInLeg {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bg-hover-light:hover {
+            background-color: $bg-light !important;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+    }
 }
 
 @media (max-width: 991px) {
