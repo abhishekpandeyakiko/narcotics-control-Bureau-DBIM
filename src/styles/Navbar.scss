@@ -95,7 +95,7 @@
 /* ================= Header Layer 2: Main Branding (White) ================= */
 .header-main-branding {
     background-color: $white;
-    padding: 20px 0;
+    padding: 10px 0;
     border-bottom: 1px solid $border-soft;
 }
 
@@ -113,7 +113,7 @@
 }
 
 .gov-emblem {
-    height: 65px;
+    height: 55px;
     width: auto;
 }
 
@@ -124,7 +124,7 @@
 }
 
 .ncb-logo-main {
-    height: 75px;
+    height: 60px;
     width: auto;
 }
 
@@ -233,11 +233,11 @@
     gap: 20px;
 
     .digital-logo {
-        height: 40px;
+        height: 35px;
     }
 
     .swachh-logo {
-        height: 70px;
+        height: 55px;
     }
 }
 
@@ -572,7 +572,7 @@
     }
 
     .sidebar-logo {
-        height: 40px;
+        height: 35px;
         width: auto;
         filter: brightness(0) invert(1);
     }

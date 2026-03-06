@@ -16,6 +16,10 @@ import FormerHeads from "../pages/FormerHeads";
 import Legislations from "../pages/Legislations";
 import NcbHistory from "../pages/NcbHistory";
 import MottoMissionVision from "../pages/MottoMissionVision";
+import Coordination from "../pages/Coordination";
+import MouCbse from "../pages/MouCbse";
+import Vigilance from "../pages/Vigilance";
+import NotFound from "../pages/NotFound";
 
 function AppRoutes() {
     return (
@@ -25,6 +29,15 @@ function AppRoutes() {
                 element={
                     <MainLayout>
                         <Home />
+                    </MainLayout>
+                }
+            />
+
+            <Route
+                path="/vigilance"
+                element={
+                    <MainLayout>
+                        <Vigilance />
                     </MainLayout>
                 }
             />
@@ -157,6 +170,46 @@ function AppRoutes() {
                 element={
                     <MainLayout>
                         <MottoMissionVision />
+                    </MainLayout>
+                }
+            />
+            <Route
+                path="/coordination"
+                element={
+                    <MainLayout>
+                        <Coordination />
+                    </MainLayout>
+                }
+            />
+            <Route
+                path="/bilateral-agreements"
+                element={
+                    <MainLayout>
+                        <Coordination />
+                    </MainLayout>
+                }
+            />
+            <Route
+                path="/mou"
+                element={
+                    <MainLayout>
+                        <MouCbse />
+                    </MainLayout>
+                }
+            />
+            <Route
+                path="/awareness/cbse-mou"
+                element={
+                    <MainLayout>
+                        <MouCbse />
+                    </MainLayout>
+                }
+            />
+            <Route
+                path="*"
+                element={
+                    <MainLayout>
+                        <NotFound />
                     </MainLayout>
                 }
             />

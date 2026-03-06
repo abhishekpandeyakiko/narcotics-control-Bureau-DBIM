@@ -57,10 +57,10 @@ function Footer() {
                         </ul>
 
                         <div className="footer-social-circles">
-                            <a href="#" aria-label="Instagram" className="social-circle-btn"><i className="bi bi-instagram"></i></a>
-                            <a href="#" aria-label="Facebook" className="social-circle-btn"><i className="bi bi-facebook"></i></a>
-                            <a href="#" aria-label="YouTube" className="social-circle-btn"><i className="bi bi-youtube"></i></a>
-                            <a href="#" aria-label="Twitter" className="social-link-external social-circle-btn"><i className="bi bi-twitter-x"></i></a>
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-link-external social-circle-btn"><i className="bi bi-instagram"></i></a>
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="social-link-external social-circle-btn"><i className="bi bi-facebook"></i></a>
+                            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="social-link-external social-circle-btn"><i className="bi bi-youtube"></i></a>
+                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="social-link-external social-circle-btn"><i className="bi bi-twitter-x"></i></a>
                         </div>
                     </div>
                 </div>

@@ -57,7 +57,7 @@ const Legislations = () => {
                 <div className="container">
                     <div className="row">
                         {/* Sidebar Navigation */}
-                        <div className="col-lg-3 mb-4">
+                        <div className="col-lg-3 mb-4 legislation-sidebar-wrapper">
                             <div className="legislation-sidebar p-3 bg-white rounded-4 shadow-sm border">
                                 <h5 className="fw-bold px-3 mb-4 text-primary">Categories</h5>
                                 <div className="nav flex-column nav-pills">
@@ -78,7 +78,7 @@ const Legislations = () => {
 
                         {/* Content Area */}
                         <div className="col-lg-9">
-                            <div className="legislation-content-card bg-white rounded-4 shadow-sm border p-4 p-md-5">
+                            <div className="legislation-content-card bg-white rounded-4 shadow-sm border p-4">
                                 {activeTab === "directive" && (
                                     <div className="content-fade-in">
                                         <h3 className="section-title mb-4">Constitutional <span>Directive Principles</span></h3>
@@ -124,7 +124,7 @@ const Legislations = () => {
                                                                 </span>
                                                             </td>
                                                             <td className="p-3 text-end">
-                                                                <button className="btn btn-view-pdf-modern d-flex align-items-center gap-2 ms-auto">
+                                                                <button className="btn-view-pdf-modern ms-auto">
                                                                     <i className="bi bi-file-earmark-pdf-fill"></i>
                                                                     <span>VIEW PDF</span>
                                                                 </button>
@@ -154,7 +154,7 @@ const Legislations = () => {
                                                                 <small className="text-muted">Effective Date: {order.date}</small>
                                                             </div>
                                                         </div>
-                                                        <button className="btn btn-view-pdf-modern d-flex align-items-center gap-2">
+                                                        <button className="btn-view-pdf-modern">
                                                             <i className="bi bi-file-earmark-pdf-fill"></i>
                                                             <span>VIEW PDF</span>
                                                         </button>
@@ -178,7 +178,7 @@ const Legislations = () => {
                                                         <h6 className="fw-bold mb-1">{notif.title}</h6>
                                                         <p className="small text-muted mb-0">{notif.desc}</p>
                                                     </div>
-                                                    <button className="btn btn-view-pdf-modern d-flex align-items-center gap-2">
+                                                    <button className="btn-view-pdf-modern mt-2">
                                                         <i className="bi bi-file-earmark-pdf-fill"></i>
                                                         <span>VIEW PDF</span>
                                                     </button>
@@ -194,16 +194,21 @@ const Legislations = () => {
                                         <div className="row g-4">
                                             {data.conventions.map((conv, i) => (
                                                 <div className="col-md-6" key={i}>
-                                                    <div className="card h-100 border-0 shadow-sm p-4 rounded-4 bg-white hover-leg-card transition-all position-relative overflow-hidden">
-                                                        <div className="d-flex align-items-center mb-3 gap-3">
-                                                            <i className="bi bi-globe2 fs-2 text-primary"></i>
-                                                            <h5 className="fw-bold mb-0">{conv.title}</h5>
+                                                    <div className="convention-card h-100">
+                                                        <div className="card-decor"></div>
+                                                        <div className="card-content-wrap">
+                                                            <div className="icon-globe-wrap">
+                                                                <i className="bi bi-globe2"></i>
+                                                            </div>
+                                                            <h5 className="conv-title">{conv.title}</h5>
+                                                            <p className="conv-desc">{conv.desc}</p>
+                                                            <div className="mt-auto pt-3">
+                                                                <button className="btn-view-pdf-modern w-100">
+                                                                    <i className="bi bi-file-earmark-pdf-fill"></i>
+                                                                    <span>VIEW PDF</span>
+                                                                </button>
+                                                            </div>
                                                         </div>
-                                                        <p className="small mb-4 opacity-75">{conv.desc}</p>
-                                                        <button className="btn btn-view-pdf-modern d-flex align-items-center gap-2 mt-auto w-100 justify-content-center">
-                                                            <i className="bi bi-file-earmark-pdf-fill"></i>
-                                                            <span>VIEW PDF</span>
-                                                        </button>
                                                     </div>
                                                 </div>
                                             ))}

@@ -14,7 +14,7 @@
     }
 
     .section-title {
-        font-size: 2.25rem; // Slightly smaller for better balance
+        font-size: 2rem; // Slightly smaller for better balance
         font-weight: 700;
         color: $primary-blue;
         margin-bottom: 1.25rem;
@@ -329,9 +329,43 @@
             color: $vibrant-blue;
         }
 
+        .legislation-sidebar-wrapper {
+            @media (min-width: 992px) {
+                position: sticky;
+                top: 225px;
+                align-self: flex-start;
+            }
+
+            @media (max-width: 991px) {
+                position: relative;
+                top: auto;
+                margin-bottom: 2rem;
+            }
+        }
+
         .legislation-sidebar {
-            position: sticky;
-            top: 100px;
+
+            /* Premium Header Styling */
+            h5 {
+                text-transform: uppercase;
+                font-size: 0.95rem;
+                letter-spacing: 1.5px;
+                color: $vibrant-blue !important;
+                position: relative;
+                padding-bottom: 12px;
+                margin-bottom: 25px !important;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 1rem;
+                    width: 40px;
+                    height: 3px;
+                    background: linear-gradient(to right, $vibrant-blue, $hq-accent);
+                    border-radius: 2px;
+                }
+            }
 
             .nav-link {
                 padding: 12px 20px;
@@ -349,6 +383,54 @@
                 &:hover:not(.active) {
                     background: $bg-light;
                     color: $primary-blue;
+                }
+            }
+
+            /* Responsive Mobile Styling for Sidebar */
+            @media (max-width: 991px) {
+                padding: 15px !important;
+
+                h5 {
+                    text-align: center;
+                    font-size: 0.85rem;
+                    margin-bottom: 15px !important;
+
+                    &::after {
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                }
+
+                .nav-pills {
+                    flex-direction: row !important;
+                    flex-wrap: nowrap;
+                    overflow-x: auto;
+                    gap: 12px;
+                    padding-bottom: 5px;
+                    -webkit-overflow-scrolling: touch;
+                    scrollbar-width: none;
+                    /* Firefox */
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                        /* Chrome/Safari */
+                    }
+
+                    .nav-link {
+                        width: auto;
+                        white-space: nowrap;
+                        padding: 5px 10px;
+                        gap: 5px !important;
+                        border-radius: 10px !important;
+                        justify-content: center;
+                        background: #f8fafc;
+                        border: 1px solid rgba($primary-blue, 0.05);
+
+                        &.active {
+                            background: $vibrant-blue !important;
+                            box-shadow: 0 4px 12px rgba($vibrant-blue, 0.25);
+                        }
+                    }
                 }
             }
         }
@@ -376,32 +458,50 @@
         }
 
         .btn-view-pdf-modern {
-            padding: 8px 18px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
+            background: $vibrant-blue;
+            color: white;
+            padding: 8px 22px;
+            border-radius: 30px;
             text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            white-space: pre;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: none;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 12px rgba($vibrant-blue, 0.2);
 
-            &:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 15px rgba(239, 68, 68, 0.3);
-                background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
-                color: #ffffff;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: $primary-blue;
+                z-index: -1;
+                transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             }
-        }
-
-        .hover-leg-card {
-            border: 1px solid rgba(0, 0, 0, 0.05);
 
             &:hover {
-                border-color: rgba($vibrant-blue, 0.2);
-                transform: translateY(-5px);
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+                color: white;
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba($primary-blue, 0.3);
+
+                &::before {
+                    transform: translateY(-100%);
+                }
+            }
+
+            &:active {
+                transform: translateY(-1px);
+                box-shadow: 0 5px 10px rgba($primary-blue, 0.2);
             }
         }
 
@@ -422,6 +522,88 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+        }
+
+        /* Convention Cards Premium Styling */
+        .convention-card {
+            background: $white;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba($primary-blue, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1;
+
+            .card-decor {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 150px;
+                height: 150px;
+                background: radial-gradient(circle at top right, rgba($vibrant-blue, 0.08), transparent 70%);
+                z-index: -1;
+                transition: transform 0.6s ease;
+            }
+
+            .card-content-wrap {
+                padding: 30px;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                height: 100%;
+            }
+
+            .icon-globe-wrap {
+                width: 50px;
+                height: 50px;
+                background: linear-gradient(135deg, $soft-blue, rgba($vibrant-blue, 0.15));
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $vibrant-blue;
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+                box-shadow: 0 4px 10px rgba($vibrant-blue, 0.1);
+                transition: all 0.3s ease;
+            }
+
+            .conv-title {
+                font-size: 1.15rem;
+                font-weight: 800;
+                color: $primary-blue;
+                margin-bottom: 12px;
+                line-height: 1.4;
+            }
+
+            .conv-desc {
+                font-size: 0.95rem;
+                color: $text-muted;
+                line-height: 1.6;
+                margin-bottom: 20px;
+                flex-grow: 1;
+            }
+
+            &:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 15px 35px rgba($primary-blue, 0.08);
+                border-color: rgba($vibrant-blue, 0.3);
+
+                .card-decor {
+                    transform: scale(1.5);
+                    background: radial-gradient(circle at top right, rgba($vibrant-blue, 0.12), transparent 70%);
+                }
+
+                .icon-globe-wrap {
+                    transform: scale(1.1) rotate(5deg);
+                    background: $vibrant-blue;
+                    color: $white;
+                    box-shadow: 0 8px 15px rgba($vibrant-blue, 0.2);
+                }
+            }
         }
 
         .content-fade-in {

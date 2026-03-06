@@ -135,7 +135,7 @@ function LatestNews() {
                                             <i className="bi bi-link-45deg"></i>
                                         </div>
                                         <h3 className="card-title">{item.title}</h3>
-                                        <a href="#" className="btn-view-link">
+                                        <a href={item.link} className="btn-view-link" target="_blank" rel="noopener noreferrer">
                                             View Link
                                         </a>
                                     </div>

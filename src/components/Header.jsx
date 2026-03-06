@@ -280,8 +280,7 @@ function Header() {
                                     <li><NavLink to="/ncb-history" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>NCB History</NavLink></li>
                                     <li><NavLink to="/legislations" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Legislations and Directive Principles</NavLink></li>
                                     <li><NavLink to="/coordination" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Coordination</NavLink></li>
-                                    <li><NavLink to="/bilateral-agreements" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Bilateral Agreements</NavLink></li>
-                                    <li><NavLink to="/mou" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>MoUs</NavLink></li>
+                                    <li><NavLink to="/mou" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>MoU with CBSE</NavLink></li>
                                     <li><NavLink to="/vigilance" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Vigilance Section</NavLink></li>
                                 </ul>
                             </li>
