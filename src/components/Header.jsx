@@ -52,7 +52,7 @@ function Header() {
     };
 
     const isAboutActive = () => {
-        const aboutRoutes = ["/about", "/organization", "/legislations", "/coordination", "/vigilance", "/bilateral-agreements", "/mou", "/motto-mission-vision"];
+        const aboutRoutes = ["/about", "/organization", "/ncb-history", "/legislations", "/coordination", "/vigilance", "/bilateral-agreements", "/mou", "/motto-mission-vision"];
         return aboutRoutes.some(path => location.pathname === path);
     };
 
@@ -276,7 +276,8 @@ function Header() {
                                 <ul className="dropdown-menu">
                                     <li><NavLink to="/about" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Profile</NavLink></li>
                                     <li><NavLink to="/motto-mission-vision" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Motto, Mission & Vision</NavLink></li>
-                                    <li><NavLink to="/organization" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Organisation</NavLink></li>
+                                    <li><NavLink to="/organization" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Organization Structure</NavLink></li>
+                                    <li><NavLink to="/ncb-history" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>NCB History</NavLink></li>
                                     <li><NavLink to="/legislations" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Legislations and Directive Principles</NavLink></li>
                                     <li><NavLink to="/coordination" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Coordination</NavLink></li>
                                     <li><NavLink to="/bilateral-agreements" className="dropdown-item" onClick={() => setIsMenuOpen(false)}>Bilateral Agreements</NavLink></li>

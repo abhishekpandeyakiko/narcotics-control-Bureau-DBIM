@@ -14,6 +14,8 @@ import PhotoGallery from "../pages/PhotoGallery";
 import VideoGallery from "../pages/VideoGallery";
 import FormerHeads from "../pages/FormerHeads";
 import Legislations from "../pages/Legislations";
+import NcbHistory from "../pages/NcbHistory";
+import MottoMissionVision from "../pages/MottoMissionVision";
 
 function AppRoutes() {
     return (
@@ -41,6 +43,15 @@ function AppRoutes() {
                 element={
                     <MainLayout>
                         <OrganizationStructure />
+                    </MainLayout>
+                }
+            />
+
+            <Route
+                path="/ncb-history"
+                element={
+                    <MainLayout>
+                        <NcbHistory />
                     </MainLayout>
                 }
             />
@@ -138,6 +149,14 @@ function AppRoutes() {
                 element={
                     <MainLayout>
                         <Legislations />
+                    </MainLayout>
+                }
+            />
+            <Route
+                path="/motto-mission-vision"
+                element={
+                    <MainLayout>
+                        <MottoMissionVision />
                     </MainLayout>
                 }
             />
